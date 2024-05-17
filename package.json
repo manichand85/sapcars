@@ -1,0 +1,33 @@
+{
+  "name": "sapcars",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@cap-js/postgres": "^1.8.0",
+    "@sap/cds": "^7",
+    "express": "^4",
+    "pg": "^8.11.5",
+    "@sap/xssec": "^3"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^1.7.0",
+    "@sap/cds-dk": "^7"
+  },
+  "scripts": {
+    "start": "cds-serve"
+  },
+  "cds": {
+    "requires": {
+      "db": {
+        "impl": "@cap-js/postgres",
+        "pool": {
+          "max": 20
+        }
+      },
+      "auth": "xsuaa"
+    }
+  }
+}
