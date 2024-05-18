@@ -8,16 +8,20 @@
   "dependencies": {
     "@cap-js/postgres": "^1.8.0",
     "@sap/cds": "^7",
+    "@sap/xssec": "^3",
     "express": "^4",
-    "pg": "^8.11.5",
-    "@sap/xssec": "^3"
+    "pg": "^8.11.5"
   },
   "devDependencies": {
     "@cap-js/sqlite": "^1.7.0",
-    "@sap/cds-dk": "^7"
+    "@sap/cds-dk": "^7",
+    "@sap/ux-specification": "^1.120.10"
   },
   "scripts": {
-    "start": "cds-serve"
+    "start": "cds-serve",
+    "watch-cars": "cds watch --open cars/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-customer": "cds watch --open customer/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-employee": "cds watch --open employee/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "cds": {
     "requires": {
@@ -29,5 +33,10 @@
       },
       "auth": "xsuaa"
     }
-  }
+  },
+  "sapux": [
+    "app/cars",
+    "app/customer",
+    "app/employee"
+  ]
 }

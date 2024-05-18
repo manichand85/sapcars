@@ -28,6 +28,24 @@ modules:
       - name: postgres
       - name: sapcars-auth
 
+  - name: SAPCARS
+    type: approuter.nodejs
+    path: app/
+    parameters:
+      buildpack: nodejs_buildpack
+      stack: cflinuxfs4
+      keep-existing-routes: true
+      disk-quota: 2048M
+      memory: 256M
+    requires:
+      - name: srv-api
+        group: destinations
+        properties:
+          name: srv-api # must be used in xs-app.json as well
+          url: ~{srv-url}
+          forwardAuthToken: true
+      - name: sapcars-auth
+
   - name: sapcars-postgres-deployer
     type: nodejs
     path: gen/pg
@@ -47,6 +65,7 @@ resources:
     parameters:
       service: postgresql-db
       service-plan: trial
+
   - name: sapcars-auth
     type: org.cloudfoundry.managed-service
     parameters:
